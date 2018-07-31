@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "2018-07-31-first-test"
 author: "Jianliang"
 date: "31 July 2018"
