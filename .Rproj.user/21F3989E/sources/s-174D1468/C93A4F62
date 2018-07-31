@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1533032320656.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1361766675",
+    "id" : "C93A4F62",
+    "lastKnownWriteTime" : 1533032342,
+    "last_content_update" : 1533032342304,
+    "path" : "F:/github/jianlianggao.homepage/rmd2md.R",
+    "project_path" : "rmd2md.R",
+    "properties" : {
+        "cursorPosition" : "89,1",
+        "scrollLine" : "70",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
