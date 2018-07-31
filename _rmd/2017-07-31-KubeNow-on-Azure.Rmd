@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "KubeNow deployment on Azure"
+excerpt:  
 author: "Jianliang"
 date: "31 July 2018"
 status: process
