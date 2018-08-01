@@ -17,7 +17,7 @@ KubeNow provides one line command deployment of Kubernetes  <https://github.com/
  
 Once you successfully run kn --preset phenomenal init azure <my-vre-config-dir>, you will see like: 
  
-![KubeNow initialization](figures/ikubenow_init.png)
+![KubeNow initialization](figures/kubenow_init.png)
  
 
 {% highlight r %}
