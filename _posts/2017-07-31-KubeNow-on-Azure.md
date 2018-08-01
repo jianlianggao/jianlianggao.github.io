@@ -11,28 +11,16 @@ output: html_document
  
 
  
-## KubeNow
+## Initialize KubeNow
  
-KubeNow provides one line command deployment of Kubernetes  <https://github.com/jianlianggao/KubeNow-plugin>.
+KubeNow provides one line command deployment of Kubernetes  <https://github.com/jianlianggao/KubeNow-plugin>. Follow the intruction to download "kn", the main Kubernetes deployment bash script, and make it executable. It is not necessary to add it into system path. As long as you are comfortable and confident to run it as needed, you can decide wherever to put it.
  
 Once you successfully run kn --preset phenomenal init azure <my-vre-config-dir>, you will see like: 
  
 ![KubeNow initialization](/figures/kubenow_init.png)
  
-
-{% highlight r %}
-summary(cars)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-{% endhighlight %}
+And, in the <my-vre-config-dir>, you should be able see the files and directories listed as follows. Otherwise, there must be something wrong with your initialization. Please check your computer environment such as network connection, permission etc.
+ 
+![Kubernetes initialization for Azure](/figures/preset_kube_azure.png)
+ 
  
