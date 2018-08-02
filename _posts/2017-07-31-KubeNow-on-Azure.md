@@ -29,19 +29,24 @@ Now it's time to create and retrieve the information of your subscription of Azu
 {% highlight r %}
 # Credentials
 subscription_id = "your-subscription_id"
-client_id       = "your-client_id" # a.k.a. your application ID
+client_id       = "your-client_id" # a.k.a. your appId
 client_secret   = "your-client_secret" # a.k.a. password
 tenant_id       = "your-tenant_id"
 {% endhighlight %}
 To obtain your Azure account information, you can either check your Azure portal settings and properties <https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal> or run the "az cli" <https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest>
  
-For example, we used "az cli" (Azure CLI. Installation of AZ CLI please check <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest>) to create and retrieve our application ID, tenant ID and confidential.
+For example, we used "az cli" (Azure CLI. Installation of AZ CLI please check <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest>) to create and retrieve our appId, tenant ID and confidential.
  
 (1) Run "az login" for the first time you will get a return code. Use the returned code to login in the link prompted.
  
-(2)
+(2) After login successfully, you can run 
+
+{% highlight r %}
+az ad sp create-for-rbac --role="Owner" --scopes="/subscriptions/<your subscription ID>"
+{% endhighlight %}
+You should have return values including "appId", "password" and "tenant".
  
-Then you need to modify the following lines in the "config.tfvars" accoriding to your need and the design your Azure cluster. The type of nodes and VMs can be found at (Azure URL needed.)
+Then you need to modify the following lines in the "config.tfvars" accoriding to your need and the design your Azure cluster. The type of nodes and VMs can be found at (<https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general>)
  
 
 {% highlight r %}
