@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+This page will be updated soon... hopefully!
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+This is me.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[j.gao AT imperial dot ac dot uk](mailto:j.gao@imperial.ac.uk)
