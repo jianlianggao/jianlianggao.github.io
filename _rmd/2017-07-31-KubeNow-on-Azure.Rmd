@@ -27,7 +27,7 @@ And, in the <my-vre-config-dir>, you should be able see the files and directorie
 
 Now it's time to create and retrieve the information of your subscription of Azure and modify the "config.tfvars" in the following lines.
 
-``` {r eval=FALSE}
+``` 
 # Credentials
 subscription_id = "your-subscription_id"
 client_id       = "your-client_id" # a.k.a. your appId
@@ -41,14 +41,14 @@ For example, we used "az cli" (Azure CLI. Installation of AZ CLI please check <h
 (1) Run "az login" for the first time you will get a return code. Use the returned code to login in the link prompted.
 
 (2) After login successfully, you can run 
-``` {r eval=FALSE}
+``` 
 az ad sp create-for-rbac --role="Owner" --scopes="/subscriptions/<your subscription ID>"
 ```
 You should have return values including "appId", "password" and "tenant".
 
 Then you need to modify the following lines in the "config.tfvars" accoriding to your need and the design your Azure cluster. The type of nodes and VMs can be found at (<https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general>)
 
-``` {r eval=FALSE}
+``` 
 # Cluster configuration
 cluster_prefix = "your-cluster-prefix" # Your cluster prefix
 location = "West Europe"  # Some location according to the the type of VMs you choose for your master, gluster and computing nodes.
