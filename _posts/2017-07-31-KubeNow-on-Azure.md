@@ -21,7 +21,7 @@ Once you successfully run kn --preset phenomenal init azure <my-vre-config-dir>,
  
 And, in the <my-vre-config-dir>, you should be able see the files and directories listed as follows. Otherwise, there must be something wrong with your initialization. Please check your computer environment such as network connection, permission etc.
  
-![Kubernetes initialization for Azure](/figures/preset_azure.png)
+![Kubernetes initialization for Azure](/figures/preset_kube_azure.png)
  
 Now it's time to create and retrieve the information of your subscription of Azure and modify the "config.tfvars" in the following lines.
  
