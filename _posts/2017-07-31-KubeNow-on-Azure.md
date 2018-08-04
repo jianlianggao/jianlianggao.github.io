@@ -61,4 +61,25 @@ node_vm_size = "Standard_DS2_v2" # change this according to your need
 # Gluster configuration
 glusternode_count = "1" # change the number of nodes according to the size of cluster
 glusternode_vm_size = "Standard_DS2_v2" # change this according to your need
+ 
+ 
+.....
+# The following passwords need to be set with fairly complicated combination keys.
+ "action" = {
+    "type"     = "ansible-playbook"
+    "playbook" = "plugins/phnmnl/KubeNow-plugin/playbooks/install-phenomenal-playbook.yml"
+    "extra_vars" = {
+      "galaxy_include"        = "true"
+      "galaxy_admin_email"    = "yoourname@bla.bla.com"
+      "galaxy_admin_password" = "YVeciekOpe!@"
+      "jupyter_include"       = "true"
+      "jupyter_password"      = "VNidieKOEy#!"
+      "luigi_include"         = "true"
+      "luigi_username"        = "admin"
+      "luigi_password"        = "reTEiopLnuuQ"
+      "dashboard_include"     = "false"
+      "dashboard_username"    = "admin"
+      "dashboard_password"    = "@£$556YuendK"
+    }
+  }
 ```
