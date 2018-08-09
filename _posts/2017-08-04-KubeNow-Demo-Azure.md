@@ -11,7 +11,7 @@ output: html_document
  
 
  
-## KubeNow Deployment Demo on Azure
+* Luigi and Jupyter notebook demo on Azure.
  
 We have kept a series of screen recording of KubeNow deployment on Azure. 
  
