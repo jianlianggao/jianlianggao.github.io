@@ -47,7 +47,7 @@ Your system is now ready to deploy Galaxy.
 
 3. In galaxy direcotry, copy `config/job_conf.xml.sample_basic` as `config/job_conf.xml` and edit the configuration file as follows.
 
-   ```xml
+    ```xml
 <?xml version="1.0"?>
 <!-- A sample job config that explicitly configures job running the way it is
      configured by default (if there is no explicit config). -->
@@ -74,7 +74,7 @@ Your system is now ready to deploy Galaxy.
      <tool id="<your docker>" destination="<your docker>-container"/>
     </tools>
 </job_conf>
-   ```
+    ```
     
 4. Edit `config/tool_conf.xml` by adding your tool, which allows Galay to list your tool on the left-hand side panel. For example,
 
