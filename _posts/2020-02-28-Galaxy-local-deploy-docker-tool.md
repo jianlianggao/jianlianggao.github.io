@@ -46,6 +46,7 @@ Your system is now ready to deploy Galaxy.
 2. Enter galaxy directory and copy `config/galaxy.yml.sample` as `config/galaxy.yml`.
 
 3. In galaxy direcotry, copy `config/job_conf.xml.sample_basic` as `config/job_conf.xml` and edit the configuration file as follows.
+
 ```
 <?xml version="1.0"?>
 <!-- A sample job config that explicitly configures job running the way it is
