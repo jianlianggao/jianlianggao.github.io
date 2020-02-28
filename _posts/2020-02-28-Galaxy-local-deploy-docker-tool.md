@@ -77,7 +77,7 @@ Your system is now ready to deploy Galaxy.
 
 ```
 4. Edit `config/tool_conf.xml` by adding your tool, which allows Galay to list your tool on the left-hand side panel. For example,
-```xml
+```
   <section id="<your tool>-tool" name="Name of your tool">
      <tool file="<path>/<to>/<your tool>.xml" />
 ```
