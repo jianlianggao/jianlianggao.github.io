@@ -87,7 +87,8 @@ Your system is now ready to deploy Galaxy.
      <tool file="<path to>/<your tool>.xml" />
 
 ```
-**NOTE:** path to your tool needs to be subdirectory in `galaxy/tools`. For example, `galaxy/tools/<path to>/<your tool>.xml`
+
+**NOTE:** path to your tool needs to be subdirectory in `galaxy/tools`. For example, `galaxy/tools/<path to>/<your tool>.xml`.
 
 5\. Create your tool XML file `galaxy/tools/<path to>/<your tool>.xml`, containing the following content as running command lines, input parameters, output parameters and help messages etc.
 
@@ -121,8 +122,8 @@ Your system is now ready to deploy Galaxy.
     <help>
     </help>
 </tool>
-
 ```
 
 ## Step 3. Run deployment command `sh run.sh` in galaxy directory.
+
 **NOTE:** If you deploy Galaxy instance on a VM on cluster or cloud, you may need a reverse proxy to access your Galaxy instance from a remote web browser, because by default settings, Galaxy instance listens to localhost (127.0.0.1) at port 8080.
