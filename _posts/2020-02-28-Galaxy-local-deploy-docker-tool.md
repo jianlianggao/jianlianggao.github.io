@@ -47,35 +47,35 @@ Your system is now ready to deploy Galaxy.
 
 3. In galaxy direcotry, copy `config/job_conf.xml.sample_basic` as `config/job_conf.xml` and edit the configuration file as follows.
 
-```xml
-
-<?xml version="1.0"?>
-<!-- A sample job config that explicitly configures job running the way it is
-     configured by default (if there is no explicit config). -->
-<job_conf>
-    <plugins>
-        <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner" workers="1"/>
-    </plugins>
-    <destinations default="local">
-        <destination id="local" runner="local"/>
-        <destination id="docker_local" runner="local">
-          <param id="docker_enabled">true</param>
-        </destination>
-
-        <destination id="<your docker>-container" runner="local">
-           <param id="docker_enabled">true</param>
-           <param id="docker_volumes">$defaults</param> -->
-           <param id="docker_sudo">false</param>
-           <param id="docker_auto_rm">true</param>
-        </destination>
-
-    </destinations>
-    <tools>
-
-     <tool id="<your docker>" destination="<your docker>-container"/>
-    </tools>
-</job_conf>
-```
+        ```xml
+        
+        <?xml version="1.0"?>
+        <!-- A sample job config that explicitly configures job running the way it is
+             configured by default (if there is no explicit config). -->
+        <job_conf>
+            <plugins>
+                <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner" workers="1"/>
+            </plugins>
+            <destinations default="local">
+                <destination id="local" runner="local"/>
+                <destination id="docker_local" runner="local">
+                  <param id="docker_enabled">true</param>
+                </destination>
+        
+                <destination id="<your docker>-container" runner="local">
+                   <param id="docker_enabled">true</param>
+                   <param id="docker_volumes">$defaults</param> -->
+                   <param id="docker_sudo">false</param>
+                   <param id="docker_auto_rm">true</param>
+                </destination>
+        
+            </destinations>
+            <tools>
+        
+             <tool id="<your docker>" destination="<your docker>-container"/>
+            </tools>
+        </job_conf>
+        ```
     
 4. Edit `config/tool_conf.xml` by adding your tool, which allows Galay to list your tool on the left-hand side panel. For example,
 
