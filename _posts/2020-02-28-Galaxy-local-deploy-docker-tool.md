@@ -34,6 +34,7 @@ Following instructions from Digital Ocean (<https://www.digitalocean.com/communi
   (NOTE: immediately after this command, you can run "docker images" in your current user (not root user) to check if your user has permissions to run docker. If you have such error "Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock:" , you need to logout and login again to re-check. If you still don't have permission to run docker, use the following command to add your user into docker group `sudo gpasswd -a ubuntu docker`. Logout and login are needed immediately after the above command. You may also need to run `sudo systemctl restart docker` after login again.)
   
 6. To insure Galaxy instance can run docker with galaxy users, you need to modify the file `/etc/sudoers and` add the following line into it. 
+
 ```galaxy ALL = (root) NOPASSWD: SETENV: /usr/bin/docker``` 
 
 Your system is now ready to deploy Galaxy.
