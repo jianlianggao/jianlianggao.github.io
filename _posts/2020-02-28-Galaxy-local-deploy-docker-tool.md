@@ -20,7 +20,7 @@ Firstly, you need to have your system ready.
 
 My tool was encapsulated in a Docker image, and my local Galaxy instance aimed to run my tool with Docker engine. Therefore I needed Docker daemon running on my local system before I launched Galaxy instance.
 
-Following instructions from Digital Ocean (https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) to install Docker-ce on your system. Here I simply duplicate the key steps.
+Following instructions from Digital Ocean (<https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>) to install Docker-ce on your system. Here I simply duplicate the key steps.
 
 1. sudo apt update && sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
