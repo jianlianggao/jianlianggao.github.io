@@ -67,4 +67,115 @@ finally:
         connection.close()
         print('db connection closed.')
 ```
+
+After a few runs, I had an idea. I wanted to observe how much differece between 6 queries within one db connection and 6 queries in 6 separate db connection. Then I did some runs with the script above, and some other runs with the script below.
+
+```
+import psycopg2, sys
+
+args = sys.argv
+if (len(args) <3 ):
+    print('user_id and user_email are required!')
+    exit(0)
+user_id = sys.argv[1]
+user_email = sys.argv[2]
+
+# 6 SQL quueries need to be done for delete a user from the XNAT db
+del1 = "delete from xdat_user where login='"+user_id+"'"
+del2 = "delete from xhbm_user_registration_data where login='"+user_id+"'"
+del3 = "delete from xs_item_cache where contents like '%"+user_id+"%' AND contents like '%"+user_email+"%'"
+del4 = "delete from xhbm_xdat_user_auth where auth_user='"+user_id+"'"
+del5 = "delete from xhbm_alias_token where xdat_user_id='"+user_id+"'"
+del6 = "delete from xdat_user_history where login='"+user_id+"'"
+
+try:
+    connection = psycopg2.connect(host='my host ip', database='xnat', user=<user>, password=<password>, port=<port number>)
+    cursor = connection.cursor()
+    cursor.execute(del1)
+    connection.commit()
+    
+except (Exception, psycopg2.Error) as error :
+    print ("Error while getting data from PostgreSQL", error)
+
+finally:
+    if(connection):
+        cursor.close()
+        connection.close()
+        print('1. Deleted from xdat_user')
+        
+try:
+    connection = psycopg2.connect(host='my host ip', database='xnat', user=<user>, password=<password>, port=<port number>)
+    cursor = connection.cursor()
+    cursor.execute(del2)
+    connection.commit()
+
+except (Exception, psycopg2.Error) as error :
+    print ("Error while getting data from PostgreSQL", error)
+
+finally:
+    if(connection):
+        cursor.close()
+        connection.close()
+        print('2. Deleted from xhbm_user_registration_data')
+
+try:
+    connection = psycopg2.connect(host='my host ip', database='xnat', user=<user>, password=<password>, port=<port number>)
+    cursor = connection.cursor()
+    cursor.execute(del3)
+    connection.commit()
+
+except (Exception, psycopg2.Error) as error :
+    print ("Error while getting data from PostgreSQL", error)
+
+finally:
+    if(connection):
+        cursor.close()
+        connection.close()
+        print('3. Deleted from xs_item_cache')
+
+try:
+    connection = psycopg2.connect(host='my host ip', database='xnat', user=<user>, password=<password>, port=<port number>)
+    cursor = connection.cursor()
+    cursor.execute(del4)
+    connection.commit()
+
+except (Exception, psycopg2.Error) as error :
+    print ("Error while getting data from PostgreSQL", error)
+
+finally:
+    if(connection):
+        cursor.close()
+        connection.close()
+        print('4. Deleted from xhbm_xdat_user_auth')
+try:
+    connection = psycopg2.connect(host='my host ip', database='xnat', user=<user>, password=<password>, port=<port number>)
+    cursor = connection.cursor()
+    cursor.execute(del5)
+    connection.commit()
+
+except (Exception, psycopg2.Error) as error :
+    print ("Error while getting data from PostgreSQL", error)
+
+finally:
+    if(connection):
+        cursor.close()
+        connection.close()
+        print('5. Deleted from  xhbm_alias_token')
+
+try:
+    connection = psycopg2.connect(host='my host ip', database='xnat', user=<user>, password=<password>, port=<port number>)
+    cursor = connection.cursor()
+    cursor.execute(del6)
+    connection.commit()
+
+except (Exception, psycopg2.Error) as error :
+    print ("Error while getting data from PostgreSQL", error)
+
+finally:
+    if(connection):
+        cursor.close()
+        connection.close()
+        print('6. Deleted from xdat_user_history')
+```
+
 ![SQL queries perforamce](/figures/psql_performance.png).
