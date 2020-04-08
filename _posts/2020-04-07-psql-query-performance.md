@@ -181,7 +181,8 @@ finally:
 ![SQL queries perforamce](/figures/psql_performance.png)
 
 ANOVA (`from statsmodels.formula.api import ols`) had output as 
-
+```
              df    sum_sq   mean_sq          F        PR(>F)
 Queries     1.0  0.043661  0.043661  33.267452  4.226861e-08
 Residual  155.0  0.203425  0.001312        NaN           NaN
+```
