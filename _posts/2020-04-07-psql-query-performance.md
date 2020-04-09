@@ -187,4 +187,4 @@ Queries     1.0  0.043661  0.043661  33.267452  4.226861e-08
 Residual  155.0  0.203425  0.001312        NaN           NaN
 ```
 
-The p-value (4.226861e-08) < 0.05 suggested to reject the null hypothesis, that is, there was significant difference between the two batches of SQL queries.
+It is an easy conclusion because the p-value (4.226861e-08) < 0.05 suggested to reject the null hypothesis. The mean time of 6 separate db connections is about 10% slower than that of single db connection. 
