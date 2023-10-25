@@ -1,0 +1,8 @@
+site_name: Jianliang's Home Page
+site_url: https://jianlianggao.github.io/
+nav:
+  - Home: index.md
+  - About: about.md
+  - Logs: log.md
+  - 'Posts': 
+    - 'dHCP': '_posts/2018-01-21-dHCP-intro.md'
