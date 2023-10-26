@@ -33,4 +33,6 @@ To establish technology for a water-tight audit trail for the processing of huma
  
 ## Website
 
-For more detail, please visit: <http://phenomenal-h2020.eu/home>
+For more detail, please visit: 
+>Introduction <https://www.youtube.com/watch?v=f8tmWikvAgw>
+>Tutorial <https://www.ebi.ac.uk/training/online/courses/phenomenal-gateway/>
