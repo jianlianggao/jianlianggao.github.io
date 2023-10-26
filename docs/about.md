@@ -1,21 +1,21 @@
-# Affiliation
+## Affiliation
 
 Graduate School & Business School 
 
 
 Imperial College London
 
-# Title
+## Title
 
 DR
 
-# Others
+## Others
 
 FHEA, IEEE member
 
-# Nickname
+## Nickname
 
 Liam
 
-# Contact
+## Contact
 >j.gao AT imperial dot ac dot uk
