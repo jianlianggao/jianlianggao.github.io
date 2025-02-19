@@ -3,7 +3,9 @@ site_url: https://jianlianggao.github.io/
 nav:
   - Home: index.md
   - About: about.md
-  - Logs: log.md
+  - Logs: 
+    - 'Galaxy local Dev': '_posts/2018-01-21-Galaxy-local-Dev.md'
+    - 'Kubenetus': '_posts/2017-07-31-KubeNow-on-Azure.md'
   - 'Posts': 
     - 'dHCP': '_posts/2018-01-21-dHCP-intro.md'
     - 'PhenoMeNal': '_posts/2017-07-21-PhenoMeNal-intro.md'
