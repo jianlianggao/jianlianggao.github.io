@@ -4,8 +4,8 @@ nav:
   - Home: index.md
   - About: about.md
   - Logs: 
-    - 'Galaxy local Dev': '_posts/2018-01-21-Galaxy-local-Dev.md'
-    - 'Kubenetus': '_posts/2017-07-31-KubeNow-on-Azure.md'
+    - 'Galaxy local Dev': '_posts/2020-02-28-Galaxy-local-deploy-docker-tool.md'
+    - 'Kubernetes': '_posts/2017-07-31-KubeNow-on-Azure.md'
   - 'Posts': 
     - 'dHCP': '_posts/2018-01-21-dHCP-intro.md'
     - 'PhenoMeNal': '_posts/2017-07-21-PhenoMeNal-intro.md'
