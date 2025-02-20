@@ -22,5 +22,6 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material 
+      - run: pip install mkdocs-windmill 
       - run: mkdocs build --clean
       - run: mkdocs gh-deploy --force
