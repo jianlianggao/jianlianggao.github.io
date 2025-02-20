@@ -1,5 +1,8 @@
 site_name: Jianliang's Home Page
 site_url: https://jianlianggao.github.io/
+theme: 
+  name: readthedocs
+  locale: uk
 nav:
   - Home: index.md
   - About: about.md
