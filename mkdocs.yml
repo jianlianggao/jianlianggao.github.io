@@ -1,7 +1,7 @@
 site_name: Jianliang's Home Page
 site_url: https://jianlianggao.github.io/
 theme: 
-  name: readthedocs
+  name: windmill
   locale: en
 nav:
   - Home: index.md
