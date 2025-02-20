@@ -1,5 +1,6 @@
 site_name: Jianliang's Home Page
 site_url: https://jianlianggao.github.io/
+site_dir: site
 theme: 
   name: windmill
   locale: en
