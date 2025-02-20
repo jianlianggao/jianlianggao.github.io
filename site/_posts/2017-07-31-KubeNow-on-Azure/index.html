@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://jianlianggao.github.io/_posts/2017-07-31-KubeNow-on-Azure/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Kubernetes - Jianliang's Home Page</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Kubernetes";
+        var mkdocs_page_input_path = "_posts/2017-07-31-KubeNow-on-Azure.md";
+        var mkdocs_page_url = "/_posts/2017-07-31-KubeNow-on-Azure/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Jianliang's Home Page
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Logs</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2020-02-28-Galaxy-local-deploy-docker-tool/">Galaxy local Dev</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Kubernetes</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Posts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2018-01-21-dHCP-intro/">dHCP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2017-07-21-PhenoMeNal-intro/">PhenoMeNal</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Jianliang's Home Page</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Logs</li>
+      <li class="breadcrumb-item active">Kubernetes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="initialize-kubenow">Initialize KubeNow</h2>
+<p>KubeNow provides one line command deployment of Kubernetes  <a href="https://github.com/jianlianggao/KubeNow-plugin">https://github.com/jianlianggao/KubeNow-plugin</a>. Follow the intruction to download "kn", the main Kubernetes deployment bash script, and make it executable. It is not necessary to add it into system path. As long as you are comfortable and confident to run it as needed, you can decide wherever to put it.</p>
+<p>Once you successfully run kn --preset phenomenal init azure <my-vre-config-dir>, you will see like: </p>
+<p><img alt="KubeNow initialization" src="/figures/kubenow_init.png" /></p>
+<p>And, in the <my-vre-config-dir>, you should be able see the files and directories listed as follows. Otherwise, there must be something wrong with your initialization. Please check your computer environment such as network connection, permission etc.</p>
+<p><img alt="Kubernetes initialization for Azure" src="/figures/preset_kube_azure.png" /></p>
+<p>Now it's time to create and retrieve the information of your subscription of Azure and modify the "config.tfvars" in the following lines.</p>
+<pre><code># Credentials
+subscription_id = &quot;your-subscription_id&quot;
+client_id       = &quot;your-client_id&quot; # a.k.a. your appId
+client_secret   = &quot;your-client_secret&quot; # a.k.a. password
+tenant_id       = &quot;your-tenant_id&quot;
+</code></pre>
+<p>To obtain your Azure account information, you can either check your Azure portal settings and properties <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal">https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal</a> or run the "az cli" <a href="https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&amp;view=azure-cli-latest">https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&amp;view=azure-cli-latest</a></p>
+<p>For example, we used "az cli" (Azure CLI. Installation of AZ CLI please check <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest">https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest</a>) to create and retrieve our appId, tenant ID and confidential.</p>
+<p>(1) Run "az login" for the first time you will get a return code. Use the returned code to login in the link prompted.</p>
+<p>(2) After login successfully, you can run </p>
+<pre><code>az ad sp create-for-rbac --role=&quot;Owner&quot; --scopes=&quot;/subscriptions/&lt;your subscription ID&gt;&quot;
+</code></pre>
+<p>You should have return values including "appId", "password" and "tenant".</p>
+<p>Then you need to modify the following lines in the "config.tfvars" accoriding to your need and the design your Azure cluster. The type of nodes and VMs can be found at (<a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general">https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general</a>)</p>
+<pre><code># Cluster configuration
+cluster_prefix = &quot;your-cluster-prefix&quot; # Your cluster prefix
+location = &quot;West Europe&quot;  # Some location according to the the type of VMs you choose for your master, gluster and computing nodes.
+
+# Master configuration
+master_vm_size = &quot;Standard_DS2_v2&quot; # change this according to your need
+
+# Node configuration
+node_count = &quot;3&quot;   # change the number of nodes according to your need
+node_vm_size = &quot;Standard_DS2_v2&quot; # change this according to your need
+
+# Gluster configuration
+glusternode_count = &quot;1&quot; # change the number of nodes according to the size of cluster
+glusternode_vm_size = &quot;Standard_DS2_v2&quot; # change this according to your need
+
+
+.....
+# The following passwords need to be set with fairly complicated combination keys.
+ &quot;action&quot; = {
+    &quot;type&quot;     = &quot;ansible-playbook&quot;
+    &quot;playbook&quot; = &quot;plugins/phnmnl/KubeNow-plugin/playbooks/install-phenomenal-playbook.yml&quot;
+    &quot;extra_vars&quot; = {
+      &quot;galaxy_include&quot;        = &quot;true&quot;
+      &quot;galaxy_admin_email&quot;    = &quot;yoourname@bla.bla.com&quot;
+      &quot;galaxy_admin_password&quot; = &quot;YVeciekOpe!@&quot;
+      &quot;jupyter_include&quot;       = &quot;true&quot;
+      &quot;jupyter_password&quot;      = &quot;VNidieKOEy#!&quot;
+      &quot;luigi_include&quot;         = &quot;true&quot;
+      &quot;luigi_username&quot;        = &quot;admin&quot;
+      &quot;luigi_password&quot;        = &quot;reTEiopLnuuQ&quot;
+      &quot;dashboard_include&quot;     = &quot;false&quot;
+      &quot;dashboard_username&quot;    = &quot;admin&quot;
+      &quot;dashboard_password&quot;    = &quot;@£$556YuendK&quot;
+    }
+  }
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2020-02-28-Galaxy-local-deploy-docker-tool/" class="btn btn-neutral float-left" title="Galaxy local Dev"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2018-01-21-dHCP-intro/" class="btn btn-neutral float-right" title="dHCP">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2020-02-28-Galaxy-local-deploy-docker-tool/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2018-01-21-dHCP-intro/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

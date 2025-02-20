@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://jianlianggao.github.io/_posts/2020-02-28-Galaxy-local-deploy-docker-tool/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Galaxy local Dev - Jianliang's Home Page</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Galaxy local Dev";
+        var mkdocs_page_input_path = "_posts/2020-02-28-Galaxy-local-deploy-docker-tool.md";
+        var mkdocs_page_url = "/_posts/2020-02-28-Galaxy-local-deploy-docker-tool/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Jianliang's Home Page
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Logs</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Galaxy local Dev</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#have-docker-ce-installed-and-configured-on-your-system">Have Docker-ce installed and configured on your system.</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2017-07-31-KubeNow-on-Azure/">Kubernetes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Posts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2018-01-21-dHCP-intro/">dHCP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2017-07-21-PhenoMeNal-intro/">PhenoMeNal</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Jianliang's Home Page</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Logs</li>
+      <li class="breadcrumb-item active">Galaxy local Dev</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Galaxy local deployment was tested on my local computer with Ubuntu 16.04 LTS and remote VM with Ubuntu 18.04 LTS. The following tutorial is based on Ubuntu 18.04.4 LTS (bionic).</p>
+<h2 id="step-1-preparation-your-local-system">Step 1. Preparation your local system</h2>
+<p>Firstly, you need to have your system ready.</p>
+<h3 id="have-docker-ce-installed-and-configured-on-your-system">Have Docker-ce installed and configured on your system.</h3>
+<p>My tool was encapsulated in a Docker image, and my local Galaxy instance aimed to run my tool with Docker engine. Therefore I needed Docker daemon running on my local system before I launched Galaxy instance.</p>
+<p>Following instructions from Digital Ocean (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04</a>) to install Docker-ce on your system. Here I simply duplicate the key steps.</p>
+<ol>
+<li>
+<p>sudo apt update &amp;&amp; sudo apt install apt-transport-https ca-certificates curl software-properties-common</p>
+</li>
+<li>
+<p>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</p>
+</li>
+<li>
+<p>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" &amp;&amp; sudo apt update</p>
+</li>
+<li>
+<p>sudo apt install docker-ce</p>
+</li>
+<li>
+<p>sudo  usermod -aG docker ${USER}
+  (<strong>NOTE:</strong> immediately after this command, you can run "docker images" in your current user (not root user) to check if your user has permissions to run docker. If you have such error "Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock:" , you need to logout and login again to re-check. If you still don't have permission to run docker, use the following command to add your user into docker group <code>sudo gpasswd -a ubuntu docker</code>. Logout and login are needed immediately after the above command. You may also need to run <code>sudo systemctl restart docker</code> after login again.)</p>
+</li>
+<li>
+<p>To insure Galaxy instance can run docker with galaxy users, you need to modify the file <code>/etc/sudoers and</code> add the following line into it. </p>
+</li>
+</ol>
+<p><code>galaxy ALL = (root) NOPASSWD: SETENV: /usr/bin/docker</code> </p>
+<p>Your system is now ready to deploy Galaxy.</p>
+<h2 id="step-2-clone-galaxy-project-and-deploy-locally">Step 2. Clone Galaxy project and deploy locally.</h2>
+<p>1. git clone Galaxy from Galaxy project GitHub <a href="https://github.com/galaxyproject/galaxy.git">https://github.com/galaxyproject/galaxy.git</a> (<strong>NOTE:</strong> I tested on 2 ext4 partitions and 1 ntfs partition. The test on ntfs partition failed)</p>
+<p>2. Enter galaxy directory and copy <code>config/galaxy.yml.sample</code> as <code>config/galaxy.yml</code>.</p>
+<p>3. In galaxy direcotry, copy <code>config/job_conf.xml.sample_basic</code> as <code>config/job_conf.xml</code> and edit the configuration file as follows.</p>
+<pre><code class="language-xml">
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!-- A sample job config that explicitly configures job running the way it is
+     configured by default (if there is no explicit config). --&gt;
+&lt;job_conf&gt;
+    &lt;plugins&gt;
+        &lt;plugin id=&quot;local&quot; type=&quot;runner&quot; load=&quot;galaxy.jobs.runners.local:LocalJobRunner&quot; workers=&quot;1&quot;/&gt;
+    &lt;/plugins&gt;
+    &lt;destinations default=&quot;local&quot;&gt;
+        &lt;destination id=&quot;local&quot; runner=&quot;local&quot;/&gt;
+        &lt;destination id=&quot;docker_local&quot; runner=&quot;local&quot;&gt;
+          &lt;param id=&quot;docker_enabled&quot;&gt;true&lt;/param&gt;
+        &lt;/destination&gt;
+
+        &lt;destination id=&quot;&lt;your tool id&gt;-container&quot; runner=&quot;local&quot;&gt;
+           &lt;param id=&quot;docker_enabled&quot;&gt;true&lt;/param&gt;
+           &lt;param id=&quot;docker_volumes&quot;&gt;$defaults&lt;/param&gt; --&gt;
+           &lt;param id=&quot;docker_sudo&quot;&gt;false&lt;/param&gt;
+           &lt;param id=&quot;docker_auto_rm&quot;&gt;true&lt;/param&gt;
+        &lt;/destination&gt;
+
+    &lt;/destinations&gt;
+    &lt;tools&gt;
+
+     &lt;tool id=&quot;&lt;your tool id&gt;&quot; destination=&quot;&lt;your tool id&gt;-container&quot;/&gt;
+    &lt;/tools&gt;
+&lt;/job_conf&gt;
+</code></pre>
+<p>4. Edit <code>config/tool_conf.xml</code> by adding your tool, which allows Galay to list your tool on the left-hand side panel. For example,</p>
+<pre><code class="language-xml">
+&lt;?xml version=&quot;1.0&quot;?&gt;
+  &lt;!-- other tools --&gt;
+  &lt;section id=&quot;&lt;your tool&gt;-tool&quot; name=&quot;Name of your tool&quot;&gt;
+     &lt;tool file=&quot;&lt;path to&gt;/&lt;your tool&gt;.xml&quot; /&gt;
+
+</code></pre>
+<p><strong>NOTE:</strong> path to your tool needs to be subdirectory in <code>galaxy/tools</code>. For example, <code>galaxy/tools/&lt;path to&gt;/&lt;your tool&gt;.xml</code>.</p>
+<p>5. Create your tool XML file <code>galaxy/tools/&lt;path to&gt;/&lt;your tool&gt;.xml</code>, containing the following content as running command lines, input parameters, output parameters and help messages etc.</p>
+<pre><code class="language-xml">
+&lt;tool id=&quot;&lt;your tool id&gt;&quot; name=&quot;&lt;Tool name&gt; (in docker)&quot;&gt;
+    &lt;description&gt;Metabo Flow&lt;/description&gt;
+    &lt;requirements&gt;
+      &lt;container type=&quot;docker&quot;&gt;docker_hub_id/tool_docker_name:tag&lt;/container&gt;
+    &lt;/requirements&gt;
+    &lt;command&gt;&lt;![CDATA[
+      &lt;entrypoint&gt; &lt;inputs ${testdata_input} ${pre_define_sd}&gt; -o outputs
+     ]]&gt;
+    &lt;/command&gt;
+    &lt;inputs&gt;
+       &lt;param name=&quot;testdata_input&quot;  type=&quot;data&quot; label=&quot;Test Dataset&quot; help=&quot;.&quot; /&gt;
+        &lt;param name=&quot;pre_define_sd&quot;  type=&quot;data&quot;  label=&quot;Pre-defined standard deviation matrix&quot; /&gt;
+    &lt;/inputs&gt;
+    &lt;outputs&gt;
+         &lt;data name=&quot;data_long&quot; format=&quot;csv&quot; from_work_dir=&quot;outputs/data_long.csv&quot; label=&quot;data_long.csv&quot;/&gt;
+         &lt;data name=&quot;data_wide&quot; format=&quot;csv&quot; from_work_dir=&quot;outputs/data_wide.csv&quot; label=&quot;data_wide.csv&quot;/&gt;
+         &lt;data name=&quot;data_wide_Symb&quot; format=&quot;csv&quot; from_work_dir=&quot;outputs/data_wide_Symb.csv&quot; label=&quot;data_wide_Symb.csv&quot;/&gt;
+         &lt;data name=&quot;stats_median_batch_corrected_data&quot; format=&quot;txt&quot; from_work_dir=&quot;outputs/stats_median_batch_corrected_data.txt&quot; label=&quot;stats_median_batch_corrected_data.txt&quot;/&gt;
+         &lt;data name=&quot;stats_outliers&quot; format=&quot;txt&quot; from_work_dir=&quot;outputs/stats_outliers.txt&quot; label=&quot;stats_outliers.txt&quot;/&gt;
+         &lt;data name=&quot;stats_raw_data&quot; format=&quot;txt&quot; from_work_dir=&quot;outputs/stats_raw_data.txt&quot; label=&quot;stats_raw_data.txt&quot;/&gt;
+         &lt;data name=&quot;stats_standardised_data&quot; format=&quot;txt&quot; from_work_dir=&quot;outputs/stats_standardised_data.txt&quot; label=&quot;stats_standardised_data.txt&quot;/&gt;
+         &lt;data name=&quot;plot_logConcentration_by_batch&quot; format=&quot;pdf&quot; from_work_dir=&quot;outputs/plot_logConcentration_by_batch.pdf&quot; label=&quot;plot_logConcentration_by_batch.pdf&quot;/&gt;
+         &lt;data name=&quot;plot_logConcentration_z_scores&quot; format=&quot;pdf&quot; from_work_dir=&quot;outputs/plot_logConcentration_z_scores.pdf&quot; label=&quot;plot_logConcentration_z_scores.pdf&quot;/&gt;
+    &lt;/outputs&gt;
+
+    &lt;help&gt;
+    &lt;/help&gt;
+&lt;/tool&gt;
+</code></pre>
+<h2 id="step-3-run-deployment-command-sh-runsh-in-galaxy-directory">Step 3. Run deployment command <code>sh run.sh</code> in galaxy directory.</h2>
+<p><strong>NOTE:</strong> If you deploy Galaxy instance on a VM on cluster or cloud, you may need a reverse proxy to access your Galaxy instance from a remote web browser, because by default settings, Galaxy instance listens to localhost (127.0.0.1) at port 8080.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../about/" class="btn btn-neutral float-left" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2017-07-31-KubeNow-on-Azure/" class="btn btn-neutral float-right" title="Kubernetes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../about/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2017-07-31-KubeNow-on-Azure/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
