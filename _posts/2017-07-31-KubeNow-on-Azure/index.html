@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://jianlianggao.github.io/_posts/2017-07-31-KubeNow-on-Azure/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Kubernetes on Azure - Jianliang's Home Page</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Initialize KubeNow", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../2017-08-04-KubeNow-Demo-Azure/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../2017-08-04-KubeNow-Demo-Azure/" class="btn btn-xs btn-link">
+        Kubernetes on Azure Demo
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../2020-02-28-Galaxy-local-deploy-docker-tool/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../2020-02-28-Galaxy-local-deploy-docker-tool/" class="btn btn-xs btn-link">
+        Galaxy local Dev
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="initialize-kubenow">Initialize KubeNow</h2>
+<p>KubeNow provides one line command deployment of Kubernetes  <a href="https://github.com/jianlianggao/KubeNow-plugin">https://github.com/jianlianggao/KubeNow-plugin</a>. Follow the intruction to download "kn", the main Kubernetes deployment bash script, and make it executable. It is not necessary to add it into system path. As long as you are comfortable and confident to run it as needed, you can decide wherever to put it.</p>
+<p>Once you successfully run kn --preset phenomenal init azure <my-vre-config-dir>, you will see like: </p>
+<p><img alt="KubeNow initialization" src="/figures/kubenow_init.png" /></p>
+<p>And, in the <my-vre-config-dir>, you should be able see the files and directories listed as follows. Otherwise, there must be something wrong with your initialization. Please check your computer environment such as network connection, permission etc.</p>
+<p><img alt="Kubernetes initialization for Azure" src="/figures/preset_kube_azure.png" /></p>
+<p>Now it's time to create and retrieve the information of your subscription of Azure and modify the "config.tfvars" in the following lines.</p>
+<pre><code># Credentials
+subscription_id = &quot;your-subscription_id&quot;
+client_id       = &quot;your-client_id&quot; # a.k.a. your appId
+client_secret   = &quot;your-client_secret&quot; # a.k.a. password
+tenant_id       = &quot;your-tenant_id&quot;
+</code></pre>
+<p>To obtain your Azure account information, you can either check your Azure portal settings and properties <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal">https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal</a> or run the "az cli" <a href="https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&amp;view=azure-cli-latest">https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&amp;view=azure-cli-latest</a></p>
+<p>For example, we used "az cli" (Azure CLI. Installation of AZ CLI please check <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest">https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest</a>) to create and retrieve our appId, tenant ID and confidential.</p>
+<p>(1) Run "az login" for the first time you will get a return code. Use the returned code to login in the link prompted.</p>
+<p>(2) After login successfully, you can run </p>
+<pre><code>az ad sp create-for-rbac --role=&quot;Owner&quot; --scopes=&quot;/subscriptions/&lt;your subscription ID&gt;&quot;
+</code></pre>
+<p>You should have return values including "appId", "password" and "tenant".</p>
+<p>Then you need to modify the following lines in the "config.tfvars" accoriding to your need and the design your Azure cluster. The type of nodes and VMs can be found at (<a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general">https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general</a>)</p>
+<pre><code># Cluster configuration
+cluster_prefix = &quot;your-cluster-prefix&quot; # Your cluster prefix
+location = &quot;West Europe&quot;  # Some location according to the the type of VMs you choose for your master, gluster and computing nodes.
+
+# Master configuration
+master_vm_size = &quot;Standard_DS2_v2&quot; # change this according to your need
+
+# Node configuration
+node_count = &quot;3&quot;   # change the number of nodes according to your need
+node_vm_size = &quot;Standard_DS2_v2&quot; # change this according to your need
+
+# Gluster configuration
+glusternode_count = &quot;1&quot; # change the number of nodes according to the size of cluster
+glusternode_vm_size = &quot;Standard_DS2_v2&quot; # change this according to your need
+
+
+.....
+# The following passwords need to be set with fairly complicated combination keys.
+ &quot;action&quot; = {
+    &quot;type&quot;     = &quot;ansible-playbook&quot;
+    &quot;playbook&quot; = &quot;plugins/phnmnl/KubeNow-plugin/playbooks/install-phenomenal-playbook.yml&quot;
+    &quot;extra_vars&quot; = {
+      &quot;galaxy_include&quot;        = &quot;true&quot;
+      &quot;galaxy_admin_email&quot;    = &quot;yoourname@bla.bla.com&quot;
+      &quot;galaxy_admin_password&quot; = &quot;YVeciekOpe!@&quot;
+      &quot;jupyter_include&quot;       = &quot;true&quot;
+      &quot;jupyter_password&quot;      = &quot;VNidieKOEy#!&quot;
+      &quot;luigi_include&quot;         = &quot;true&quot;
+      &quot;luigi_username&quot;        = &quot;admin&quot;
+      &quot;luigi_password&quot;        = &quot;reTEiopLnuuQ&quot;
+      &quot;dashboard_include&quot;     = &quot;false&quot;
+      &quot;dashboard_username&quot;    = &quot;admin&quot;
+      &quot;dashboard_password&quot;    = &quot;@£$556YuendK&quot;
+    }
+  }
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../2017-08-04-KubeNow-Demo-Azure/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../2017-08-04-KubeNow-Demo-Azure/" class="btn btn-xs btn-link">
+        Kubernetes on Azure Demo
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../2020-02-28-Galaxy-local-deploy-docker-tool/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../2020-02-28-Galaxy-local-deploy-docker-tool/" class="btn btn-xs btn-link">
+        Galaxy local Dev
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
