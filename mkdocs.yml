@@ -10,7 +10,7 @@ nav:
   - Logs: 
     - 'Galaxy local Dev': '_posts/2020-02-28-Galaxy-local-deploy-docker-tool.md'
     - 'Kubernetes on Azure': '_posts/2017-07-31-KubeNow-on-Azure.md'
-    - 'Kubernetes on Azure Demo': '_posts/2017-08-04-KubeNow-on-Demo-Azure.md'
+    - 'Kubernetes on Azure Demo': '_posts/2017-08-04-KubeNow-Demo-Azure.md'
   - 'Posts': 
     - 'dHCP': '_posts/2018-01-21-dHCP-intro.md'
     - 'PhenoMeNal': '_posts/2017-07-21-PhenoMeNal-intro.md'
