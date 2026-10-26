@@ -48,7 +48,6 @@ Your system is now ready to deploy Galaxy.
 3\. In galaxy direcotry, copy `config/job_conf.xml.sample_basic` as `config/job_conf.xml` and edit the configuration file as follows.
 
 ```xml
-
 <?xml version="1.0"?>
 <!-- A sample job config that explicitly configures job running the way it is
      configured by default (if there is no explicit config). -->
@@ -80,12 +79,10 @@ Your system is now ready to deploy Galaxy.
 4\. Edit `config/tool_conf.xml` by adding your tool, which allows Galay to list your tool on the left-hand side panel. For example,
 
 ```xml
-
 <?xml version="1.0"?>
   <!-- other tools -->
   <section id="<your tool>-tool" name="Name of your tool">
      <tool file="<path to>/<your tool>.xml" />
-
 ```
 
 **NOTE:** path to your tool needs to be subdirectory in `galaxy/tools`. For example, `galaxy/tools/<path to>/<your tool>.xml`.
@@ -93,7 +90,6 @@ Your system is now ready to deploy Galaxy.
 5\. Create your tool XML file `galaxy/tools/<path to>/<your tool>.xml`, containing the following content as running command lines, input parameters, output parameters and help messages etc.
 
 ```xml
-
 <tool id="<your tool id>" name="<Tool name> (in docker)">
     <description>Metabo Flow</description>
     <requirements>
