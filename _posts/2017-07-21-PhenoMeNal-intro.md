@@ -3,7 +3,7 @@ layout: post
 title: "Introduce to PhenoMeNal"
 excerpt:  
 author: "Jianliang"
-date: "21 July 2018"
+date: 2017-07-21
 status: publish
 published: true
 output: html_document

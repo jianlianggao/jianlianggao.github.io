@@ -3,7 +3,7 @@ layout: post
 title: "KubeNow deployment on Azure"
 excerpt:  
 author: "Jianliang"
-date: "31 July 2018"
+date: 2017-07-31
 status: publish
 published: true
 output: html_document

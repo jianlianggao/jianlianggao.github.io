@@ -3,7 +3,7 @@ layout: post
 title: "Introduce to dHCP"
 excerpt:  
 author: "Jianliang"
-date: "09 August 2018"
+date: 2018-01-21
 status: publish
 published: true
 output: html_document

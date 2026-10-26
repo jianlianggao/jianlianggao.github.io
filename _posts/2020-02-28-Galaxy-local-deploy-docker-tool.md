@@ -3,7 +3,7 @@ layout: post
 title: "Galaxy Local Deployment to Launch Docker Container(s)"
 excerpt:  
 author: "Jianliang"
-date: "28 Feburary 2020"
+date: 2020-02-28
 status: publish
 published: true
 output: html_document

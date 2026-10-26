@@ -3,7 +3,7 @@ layout: post
 title: "PostgreSQL queries performance"
 excerpt:  
 author: "Jianliang"
-date: "07 April 2020"
+date: 2020-04-07
 status: publish
 published: true
 output: html_document
