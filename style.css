@@ -139,27 +139,27 @@ nav ul li a:hover::after{
 /*----------------End About section -------------*/
 
 
-/*----------------start blogs section -------------*/
-#blogs{
+/*----------------start service section -------------*/
+#services{
     padding: 30px 0;
     background: #074751;
     
 }
-#blogs .contenier{
+#services .contenier{
     text-align: center;
 }
-#blogs .contenier p{
+#services .contenier p{
     margin-top: 15px;
 }
 
 
-.blogs-list{
+.services-list{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     grid-gap: 40px;
     margin-top: 50px;
 }
-.blogs-list div{
+.services-list div{
     background: #231f1f;
     padding: 40px;
     font-size: 13px;
@@ -168,15 +168,15 @@ nav ul li a:hover::after{
     transition: background 0.5s, transform 0.5s;
 
 }
-.blogs-list div img{
+.services-list div img{
     margin-bottom: 30px;
 }
-.blogs-list div h2{
+.services-list div h2{
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 15px;
 }
-.blogs-list div a{
+.services-list div a{
     text-decoration: none;
     color: #fff;
     font-size: 12px;
@@ -186,11 +186,11 @@ nav ul li a:hover::after{
     padding: 10px;
     border-radius: 5px;
 }
-.blogs-list div a:hover{
+.services-list div a:hover{
     background: #1092de;
 
 }
-.blogs-list div:hover{
+.services-list div:hover{
     background: #1092de;
     transform: translateY(-10px);
 }
@@ -198,7 +198,7 @@ nav ul li a:hover::after{
 
 
 
-/*----------------end blogs section -------------*/
+/*----------------end service section -------------*/
 
 
 /*----------------start portfolio section -------------*/
