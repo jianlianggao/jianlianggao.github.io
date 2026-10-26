@@ -140,12 +140,16 @@
         <div class="contenier" >
             <h1 class="sub-title">Blogs</h1>
             <div class="services-list">
-                <div data-aos="fade-right">
-                    <img src="img/flag.png">
-                    <h2>Web Development</h2>
-                    <p>Creating websites from ideas.</p>
-                    <a href="#">Learn More</a>
-                </div>
+                <!-- Loop through your Jekyll posts -->
+            {% for post in site.posts limit:6 %}
+            <div data-aos="fade-right">
+                <!-- Optional: Add a featured image if specified in post front matter -->
+                <img src="img/flag.png">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                <a href="{{ post.url | relative_url }}">Read More</a>
+            </div>
+            {% endfor %}
                 <div data-aos="flip-up">
                     <img src="img/pancel.png" >
                     <h2>Mobile app Design</h2>
