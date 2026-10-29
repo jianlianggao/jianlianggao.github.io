@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="fluid-overlay-styles.css" />
     <title>my profile</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <!-- Marked.js library for rendering Markdown client-side -->
@@ -16,6 +17,8 @@
     <script>hljs.highlightAll();</script> 
 </head>
 <body onload="loader()">
+   <canvas></canvas>
+    <!--The canvas on which the animation is drawn-->
     <div id="Loading"></div>
      <!-----start Hearder section----->
      <div id="hearder"  data-aos="fade-up"
@@ -243,6 +246,6 @@
             sidmenu.style.right ="-200px";
         }
     </script>
-    
+    <script src="./webgl-fluid.js"></script>
 </body>
 </html>
