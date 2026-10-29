@@ -36,7 +36,7 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(0, 0, 0);
-  font-size: 25px;
+  font-size: 15px !important;
   z-index: 1; /* above canvas */
   pointer-events: none; /* this is important as it ensures that the effect works under the heading */
 }
