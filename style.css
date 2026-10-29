@@ -30,9 +30,7 @@ nav{
 .logo{
     width: 140px;
 }
-.overlay-title {
-  font-size: 24px; 
-}
+
 nav ul li {
     display: inline-block;
     list-style: none;

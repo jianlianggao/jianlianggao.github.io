@@ -41,6 +41,21 @@ canvas {
   pointer-events: none; /* this is important as it ensures that the effect works under the heading */
 }
 
+.overlay-title {
+  font-family: "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  z-index: 1; /* above canvas */
+  pointer-events: none; /* this is important as it ensures that the effect works under the heading */
+}
+
 /* Content below the animation canvas */
 .page-content {
   padding: 20px;
